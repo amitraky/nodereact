@@ -1,25 +1,39 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import Client from './client';
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { timestamp :'0' };
+    this.set_timer = this.set_timer.bind(this);
+  }
+
+ 
+ 
+  set_timer(){
+
+    this.setState({timestamp:445454});
+
+     console.log(this.state);
+  }
+
+  componentDidMount()
+  {
+   var x =  Client((err,time)=>{
+
+         this.setState({timestamp:time});   })
+      console.log(x)
+    this.set_timer();
+  }
+
+  
   render() {
+   
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className="Apps">              
+       {this.state.timestamp}
       </div>
     );
   }
